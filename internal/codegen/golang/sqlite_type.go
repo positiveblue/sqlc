@@ -24,7 +24,7 @@ func sqliteType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.
 		if emitPointersForNull {
 			return "*int64"
 		}
-		return "sql.NullInt64"
+		return "sql.Null[int64]"
 
 	case "blob":
 		return "[]byte"
@@ -36,7 +36,7 @@ func sqliteType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.
 		if emitPointersForNull {
 			return "*float64"
 		}
-		return "sql.NullFloat64"
+		return "sql.Null[float64]"
 
 	case "boolean", "bool":
 		if notNull {
@@ -45,7 +45,7 @@ func sqliteType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.
 		if emitPointersForNull {
 			return "*bool"
 		}
-		return "sql.NullBool"
+		return "sql.Null[bool]"
 
 	case "date", "datetime", "timestamp":
 		if notNull {
@@ -54,7 +54,7 @@ func sqliteType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.
 		if emitPointersForNull {
 			return "*time.Time"
 		}
-		return "sql.NullTime"
+		return "sql.Null[time.Time]"
 
 	case "any":
 		return "interface{}"
@@ -77,7 +77,7 @@ func sqliteType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.
 		if emitPointersForNull {
 			return "*string"
 		}
-		return "sql.NullString"
+		return "sql.Null[string]"
 
 	case strings.HasPrefix(dt, "decimal"), dt == "numeric":
 		if notNull {
@@ -86,7 +86,7 @@ func sqliteType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.
 		if emitPointersForNull {
 			return "*float64"
 		}
-		return "sql.NullFloat64"
+		return "sql.Null[float64]"
 
 	default:
 		if debug.Active {

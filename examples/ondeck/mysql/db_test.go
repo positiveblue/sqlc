@@ -14,11 +14,11 @@ import (
 	"github.com/sqlc-dev/sqlc/internal/sqltest/local"
 )
 
-func join(vals ...string) sql.NullString {
+func join(vals ...string) sql.Null[string] {
 	if len(vals) == 0 {
-		return sql.NullString{}
+		return sql.Null[string]{}
 	}
-	return sql.NullString{
+	return sql.Null[string]{
 		Valid:  true,
 		String: strings.Join(vals, ","),
 	}

@@ -20,14 +20,14 @@ func mysqlType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.C
 		if notNull {
 			return "string"
 		}
-		return "sql.NullString"
+		return "sql.Null[string]"
 
 	case "tinyint":
 		if col.Length == 1 {
 			if notNull {
 				return "bool"
 			}
-			return "sql.NullBool"
+			return "sql.Null[bool]"
 		} else {
 			if notNull {
 				if unsigned {
@@ -37,14 +37,14 @@ func mysqlType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.C
 			}
 			// The database/sql package does not have a sql.NullInt8 type, so we
 			// use the smallest type they have which is NullInt16
-			return "sql.NullInt16"
+			return "sql.Null[int16]"
 		}
 
 	case "year":
 		if notNull {
 			return "int16"
 		}
-		return "sql.NullInt16"
+		return "sql.Null[int16]"
 
 	case "smallint":
 		if notNull {
@@ -53,7 +53,7 @@ func mysqlType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.C
 			}
 			return "int16"
 		}
-		return "sql.NullInt16"
+		return "sql.Null[int16]"
 
 	case "int", "integer", "mediumint":
 		if notNull {
@@ -62,7 +62,7 @@ func mysqlType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.C
 			}
 			return "int32"
 		}
-		return "sql.NullInt32"
+		return "sql.Null[int32]"
 
 	case "bigint":
 		if notNull {
@@ -71,25 +71,25 @@ func mysqlType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.C
 			}
 			return "int64"
 		}
-		return "sql.NullInt64"
+		return "sql.Null[int64]"
 
 	case "blob", "binary", "varbinary", "tinyblob", "mediumblob", "longblob":
 		if notNull {
 			return "[]byte"
 		}
-		return "sql.NullString"
+		return "sql.Null[string]"
 
 	case "double", "double precision", "real", "float":
 		if notNull {
 			return "float64"
 		}
-		return "sql.NullFloat64"
+		return "sql.Null[float64]"
 
 	case "decimal", "dec", "fixed":
 		if notNull {
 			return "string"
 		}
-		return "sql.NullString"
+		return "sql.Null[string]"
 
 	case "enum":
 		// TODO: Proper Enum support
@@ -99,13 +99,13 @@ func mysqlType(req *plugin.GenerateRequest, options *opts.Options, col *plugin.C
 		if notNull {
 			return "time.Time"
 		}
-		return "sql.NullTime"
+		return "sql.Null[time.Time]"
 
 	case "boolean", "bool":
 		if notNull {
 			return "bool"
 		}
-		return "sql.NullBool"
+		return "sql.Null[bool]"
 
 	case "json":
 		return "json.RawMessage"

@@ -87,8 +87,8 @@ The following code is generated:
 
 ```go
 type UpdateAuthorParams struct {
-	Name sql.NullString
-	Bio  sql.NullString
+        Name sql.Null[string]
+        Bio  sql.Null[string]
 	ID   int64
 }
 ```

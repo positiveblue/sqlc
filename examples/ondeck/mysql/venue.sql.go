@@ -33,13 +33,13 @@ INSERT INTO venue (
 `
 
 type CreateVenueParams struct {
-	Slug            string         `json:"slug"`
-	Name            string         `json:"name"`
-	City            string         `json:"city"`
-	SpotifyPlaylist string         `json:"spotify_playlist"`
-	Status          VenueStatus    `json:"status"`
-	Statuses        sql.NullString `json:"statuses"`
-	Tags            sql.NullString `json:"tags"`
+	Slug            string           `json:"slug"`
+	Name            string           `json:"name"`
+	City            string           `json:"city"`
+	SpotifyPlaylist string           `json:"spotify_playlist"`
+	Status          VenueStatus      `json:"status"`
+	Statuses        sql.Null[string] `json:"statuses"`
+	Tags            sql.Null[string] `json:"tags"`
 }
 
 func (q *Queries) CreateVenue(ctx context.Context, arg CreateVenueParams) (sql.Result, error) {

@@ -30,7 +30,7 @@ type Place struct {
 ## Dates and times
 
 All date and time types are returned as `time.Time` structs. For
-null time or date values, the `NullTime` type from `database/sql` is used.
+null time or date values, use `sql.Null[time.Time]` from `database/sql`.
 
 The `pgx/v5` sql package uses the appropriate pgx types.
 
@@ -56,7 +56,7 @@ import (
 type Author struct {
 	ID        int
 	CreatedAt time.Time
-	UpdatedAt sql.NullTime
+        UpdatedAt sql.Null[time.Time]
 }
 ```
 
@@ -116,7 +116,7 @@ import (
 type Author struct {
 	ID   int
 	Name string
-	Bio  sql.NullString
+        Bio  sql.Null[string]
 }
 ```
 
@@ -143,7 +143,7 @@ type Author struct {
 }
 ```
 
-For MySQL, there is no native `uuid` data type. When using `UUID_TO_BIN` to store a `UUID()`, the underlying field type is `BINARY(16)` which by default sqlc would interpret this to `sql.NullString`. To have sqlc automatically convert these fields to a `uuid.UUID` type, use an overide on the column storing the `uuid`.
+For MySQL, there is no native `uuid` data type. When using `UUID_TO_BIN` to store a `UUID()`, the underlying field type is `BINARY(16)` which by default sqlc would interpret this to `sql.Null[string]`. To have sqlc automatically convert these fields to a `uuid.UUID` type, use an overide on the column storing the `uuid`.
 ```json
 {
   "overrides": [
