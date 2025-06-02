@@ -1384,8 +1384,8 @@ When using Go, sqlc will produce a struct like this:
 ```
 type HighScoreRow struct {
 	ID        int64
-	Name      sql.NullString
-	Age       sql.NullInt32
+        Name      sql.Null[string]
+        Age       sql.Null[int32]
 	HighScore int32
 }
 ```

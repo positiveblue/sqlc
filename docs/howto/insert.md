@@ -88,7 +88,7 @@ RETURNING id, name, bio
 
 type CreateAuthorParams struct {
 	Name string
-	Bio  sql.NullString
+        Bio  sql.Null[string]
 }
 
 func (q *Queries) CreateAuthor(ctx context.Context, arg CreateAuthorParams) (Author, error) {
@@ -109,7 +109,7 @@ RETURNING id
 
 type CreateAuthorAndReturnIdParams struct {
 	Name string
-	Bio  sql.NullString
+        Bio  sql.Null[string]
 }
 
 func (q *Queries) CreateAuthorAndReturnId(ctx context.Context, arg CreateAuthorAndReturnIdParams) (int64, error) {

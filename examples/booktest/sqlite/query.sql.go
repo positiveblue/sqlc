@@ -27,7 +27,7 @@ WHERE tag IN (/*SLICE:tags*/?)
 type BooksByTagsRow struct {
 	BookID int64
 	Title  string
-	Name   sql.NullString
+	Name   sql.Null[string]
 	Isbn   string
 	Tag    string
 }

@@ -64,8 +64,8 @@ package db
 
 type Post struct {
 	ID    int
-	Title sql.NullString
-	Body  sql.NullString
+        Title sql.Null[string]
+        Body  sql.Null[string]
 }
 ```
 
@@ -138,8 +138,8 @@ package db
 
 type Post struct {
 	ID    int
-	Title sql.NullString
-	Body  sql.NullString
+        Title sql.Null[string]
+        Body  sql.Null[string]
 }
 ```
 
@@ -188,8 +188,8 @@ package db
 
 type Post struct {
 	ID    int
-	Title sql.NullString
-	Body  sql.NullString
+        Title sql.Null[string]
+        Body  sql.Null[string]
 }
 ```
 

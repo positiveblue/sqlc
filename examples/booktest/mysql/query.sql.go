@@ -26,7 +26,7 @@ WHERE tags = ?
 type BooksByTagsRow struct {
 	BookID int32
 	Title  string
-	Name   sql.NullString
+	Name   sql.Null[string]
 	Isbn   string
 	Tags   string
 }

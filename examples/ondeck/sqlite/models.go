@@ -15,14 +15,14 @@ type City struct {
 }
 
 type Venue struct {
-	ID              int64          `json:"id"`
-	Status          string         `json:"status"`
-	Statuses        sql.NullString `json:"statuses"`
-	Slug            string         `json:"slug"`
-	Name            string         `json:"name"`
-	City            string         `json:"city"`
-	SpotifyPlaylist string         `json:"spotify_playlist"`
-	SongkickID      sql.NullString `json:"songkick_id"`
-	Tags            sql.NullString `json:"tags"`
-	CreatedAt       time.Time      `json:"created_at"`
+	ID              int64            `json:"id"`
+	Status          string           `json:"status"`
+	Statuses        sql.Null[string] `json:"statuses"`
+	Slug            string           `json:"slug"`
+	Name            string           `json:"name"`
+	City            string           `json:"city"`
+	SpotifyPlaylist string           `json:"spotify_playlist"`
+	SongkickID      sql.Null[string] `json:"songkick_id"`
+	Tags            sql.Null[string] `json:"tags"`
+	CreatedAt       time.Time        `json:"created_at"`
 }

@@ -20,7 +20,7 @@ INSERT INTO authors (
 
 type CreateAuthorParams struct {
 	Name string
-	Bio  sql.NullString
+	Bio  sql.Null[string]
 }
 
 func (q *Queries) CreateAuthor(ctx context.Context, arg CreateAuthorParams) (sql.Result, error) {

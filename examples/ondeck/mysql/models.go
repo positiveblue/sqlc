@@ -62,14 +62,14 @@ type City struct {
 type Venue struct {
 	ID uint64 `json:"id"`
 	// Venues can be either open or closed
-	Status   VenueStatus    `json:"status"`
-	Statuses sql.NullString `json:"statuses"`
+	Status   VenueStatus      `json:"status"`
+	Statuses sql.Null[string] `json:"statuses"`
 	// This value appears in public URLs
-	Slug            string         `json:"slug"`
-	Name            string         `json:"name"`
-	City            string         `json:"city"`
-	SpotifyPlaylist string         `json:"spotify_playlist"`
-	SongkickID      sql.NullString `json:"songkick_id"`
-	Tags            sql.NullString `json:"tags"`
-	CreatedAt       time.Time      `json:"created_at"`
+	Slug            string           `json:"slug"`
+	Name            string           `json:"name"`
+	City            string           `json:"city"`
+	SpotifyPlaylist string           `json:"spotify_playlist"`
+	SongkickID      sql.Null[string] `json:"songkick_id"`
+	Tags            sql.Null[string] `json:"tags"`
+	CreatedAt       time.Time        `json:"created_at"`
 }
